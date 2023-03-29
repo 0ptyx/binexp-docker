@@ -6,7 +6,7 @@ services:
       - "8000:8000"
       - "31337:31337"
     environment:
-      - TARGET_PROG=${TARGET_PROG}
+      - BIN_TARGET=${BIN_TARGET}
     entrypoint: ["/usr/sbin/xinetd", "-filelog", "/dev/stderr", "-dontfork", "-f", "/service.conf"]
       #entrypoint: ["tail", "-f", "/dev/null"]
 

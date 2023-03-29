@@ -12,7 +12,7 @@ First clone down this project and `cd` into it. Then create the `target` folder 
 If you have other files, like a `flag.txt` file for a ctf, copy them into the project's root directory.
 Finally, run the following command, replacing `[target name]` with the name of your target binary.
 ```
-sudo TARGET=[target name] docker-compose up -d --build
+sudo BIN_TARGET=[target name] docker-compose up -d --build
 ```
 
 Now that it's running, the program will be availble on port 31337 of the local host interface. In addition to that, you can run the program with gdb server and connect to it for remote debugging.

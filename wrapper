@@ -2,4 +2,4 @@
 
 
 exec 2>/dev/null
-timeout -k1 240 stdbuf -i0 -o0 -e0 /target/$TARGET_PROG
+timeout -k1 240 stdbuf -i0 -o0 -e0 /target/$BIN_TARGET
