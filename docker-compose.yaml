@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  gdbserver:
+    build: .
+    ports:
+      - "8000:8000"
+      - "31337:31337"
+    environment:
+      - TARGET_PROG=${TARGET_PROG}
+    entrypoint: ["/usr/sbin/xinetd", "-filelog", "/dev/stderr", "-dontfork", "-f", "/service.conf"]
+      #entrypoint: ["tail", "-f", "/dev/null"]
+
+    # Weird issue with Docker + xinetd. See
+    # https://serverfault.com/questions/1122940/why-does-xinetd-try-to-close-file-descriptors-on-startup
+    # We need to set ulimits so xinetd won't take forever to start
+    ulimits:
+      nofile:
+        soft: 1024
+        hard: 10000
