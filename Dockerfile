@@ -4,9 +4,10 @@ COPY target/ target/
 COPY service.conf /service.conf
 COPY banner_fail /banner_fail
 COPY wrapper /wrapper
+RUN useradd ctf
 RUN chmod +x /wrapper
-RUN chown -R nobody:nobody target/
+RUN chown -R ctf:ctf target/
 WORKDIR target/
-USER nobody
+USER ctf
 
 
