@@ -9,7 +9,9 @@ services:
       - BIN_TARGET=${BIN_TARGET}
     entrypoint: ["/usr/sbin/xinetd", "-filelog", "/dev/stderr", "-dontfork", "-f", "/service.conf"]
       #entrypoint: ["tail", "-f", "/dev/null"]
-
+    volumes:
+      - ./target/:/target
+    working_dir: /target
     # Weird issue with Docker + xinetd. See
     # https://serverfault.com/questions/1122940/why-does-xinetd-try-to-close-file-descriptors-on-startup
     # We need to set ulimits so xinetd won't take forever to start
